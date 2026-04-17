@@ -1,14 +1,11 @@
 describe("REGISTER DEMOQA", () => {
     it("register", () => {
         cy.visitWithoutAds('https://demoqa.com/register')
-
         //headers
         cy.get('h1').contains('Register')
-       // cy.get('h1').should('have.text', 'Register')
         cy.get('h4').contains('Register to Book Store')
 
         //labels
-        //cy.get('#firstname-label').contains('First Name : ')
         cy.get('#firstname-label').should('have.text', 'First Name :')
         cy.get('#lastname-label').should('have.text', 'Last Name : ')
         cy.get('#userName-label').should('have.text', 'UserName : ')
