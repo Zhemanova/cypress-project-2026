@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 describe("REGISTER DEMOQA", () => {
     it("register", () => {
         cy.visitWithoutAds('https://demoqa.com/register')
