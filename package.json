@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:test": "cypress open --e2e --browser chrome"
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:test": "cypress run --browser chrome --headed --spec cypress/e2e/register/register.cy.js",
+    "cy:run": "cypress run --browser chrome --spec cypress/e2e/register/register.cy.js"
+
   },
   "private": true,
   "keywords": [],
