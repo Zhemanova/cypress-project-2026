@@ -1,3 +1,4 @@
+import { login } from '../pages/'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,6 +24,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (userName, password) => {
+    cy.get('#userName').clear().type(userName)
+    cy.get('#password').clear().type(password)
+})
+
 Cypress.Commands.add('visitWithoutAds', (url, options = {}) => {
 
     cy.intercept('GET', '**/*ads*', { statusCode: 204 })

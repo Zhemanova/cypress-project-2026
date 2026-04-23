@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker'
+import Base from "../base/Base.js";
 
-export default class Register {
+export default class Register extends Base {
     header1 = () => cy.get('h1')
     header4 = () => cy.get('h4')
 
@@ -48,5 +49,9 @@ export default class Register {
 
     registerClick = () => {
         this.registerBtn().click()
+    }
+
+    open(path) {
+        super.open(path)
     }
 }

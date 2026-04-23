@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker'
+import Base from "../base/Base.js";
 
-export default class Login {
+export default class Login extends Base {
 header = {
     h1: () => cy.get('h1'),
     h2: () => cy.get('h2'),
@@ -44,4 +45,8 @@ fillOutTheForm = () => {
 loginClick = () => {
     this.button.login().click()
 }
+
+open(path) {
+        super.open(path)
+    }
 }
