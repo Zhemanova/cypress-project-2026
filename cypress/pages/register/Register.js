@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker'
 import Base from "../base/Base.js";
 
 export default class Register extends Base {
@@ -36,11 +35,11 @@ export default class Register extends Base {
         this.passwordInput().should('have.attr', 'placeholder', 'Password')
     }
 
-    fillOutTheForm = () => {
-        this.firstNameInput().click().clear().type(faker.person.firstName('female'))
-        this.lastNameInput().click().clear().type(faker.person.lastName('female'))
-        this.userNameInput().click().clear().type(faker.internet.username())
-        this.passwordInput().click().clear().type("!@Aa123123")
+    fillOutTheForm = (user) => {
+        this.firstNameInput().click().clear().type(user.firstName)
+        this.lastNameInput().click().clear().type(user.lastName)
+        this.userNameInput().click().clear().type(user.username)
+        this.passwordInput().click().clear().type(user.password)
     }
 
     verifyRegisterBtn = () => {

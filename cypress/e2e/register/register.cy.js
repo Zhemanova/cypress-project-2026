@@ -1,4 +1,5 @@
 import { register } from '../../pages'
+import { users } from '../../fixtures/users.js'
 
 describe("REGISTER DEMOQA", () => {
     it("register", () => {
@@ -7,7 +8,7 @@ describe("REGISTER DEMOQA", () => {
         register.verifyHeaders()
         register.verifyLabels()
         register.verifyPlaceholders()
-        register.fillOutTheForm()
+        register.fillOutTheForm(users.register)
         register.verifyRegisterBtn()
         register.registerClick()
     })
