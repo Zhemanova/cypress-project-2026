@@ -37,9 +37,9 @@ verifyPlaceholders = () => {
     this.placeholders.password().should('have.attr', 'placeholder','Password')
 }
 
-fillOutTheForm = () => {
-    this.placeholders.userName().clear().type('KrystalMiller')
-    this.placeholders.password().clear().type('!@Aa123123')
+fillOutTheForm = (user) => {
+    this.placeholders.userName().clear().type(user.userName)
+    this.placeholders.password().clear().type(user.password)
 }
 
 loginClick = () => {
