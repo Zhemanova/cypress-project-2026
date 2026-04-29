@@ -6,6 +6,8 @@ module.exports = defineConfig({
   viewportHeight: 900,
 
   e2e: {
+    baseUrl: 'https://demoqa.com',
+    chromeWebSecurity: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

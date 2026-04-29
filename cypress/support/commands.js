@@ -25,8 +25,10 @@ import { login } from '../pages/'
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('login', (user) => {
+    cy.visit('/login')
     cy.get('#userName').clear().type(user.userName)
     cy.get('#password').clear().type(user.password)
+    cy.get('#login').click()
 })
 
 Cypress.Commands.add('visitWithoutAds', (url, options = {}) => {

@@ -4,7 +4,7 @@ import { users } from '../../fixtures/users.js'
 describe('REGISTER DEMOQA', () => {
     it('fill the form', () => {
        // cy.visitWithoutAds('https://demoqa.com/login');
-        login.open('https://demoqa.com/login')
+        login.open('/login')
         login.verifyHeaders()
         login.verifyLabels()
         login.verifyPlaceholders()
