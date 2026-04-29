@@ -5,6 +5,11 @@ export const profileData = {
     },
 
     buttons: {
-
+        logout: "Logout",
+        goToStore: "Go To Book Store",
+        deleteAccount: "Delete Account",
+        deleteAllBooks: "Delete All Books",
+        previous: "Previous",
+        next: "Next"
     }
 }

@@ -7,5 +7,6 @@ describe('PROFILE', () => {
         cy.login(users.login)
         cy.url().should('include', '/profile')
         profile.verifyLabels(profileData.labels)
+        profile.verifyButtons(profileData.buttons)
     });
 });
