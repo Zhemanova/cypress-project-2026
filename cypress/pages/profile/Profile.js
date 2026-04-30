@@ -2,9 +2,14 @@ import Base from '../base/Base.js'
 
 export default class Profile extends Base {
     // selectors
+    userNameValue = () => cy.get('#userName-value')
+    button = () => cy.get('button')
+    span = () => cy.get('span')
+
     wrappers = {
        top: () => cy.get('#books-wrapper'),
-        bottom: () => cy.get('.buttonWrap')
+        bottom: () => cy.get('.buttonWrap'),
+        profile: () => cy.get('.profile-wrapper'),
     }
 
     labels= {
@@ -18,9 +23,6 @@ export default class Profile extends Base {
         deleteAccount: () => cy.get('.text-center > #submit'),
         deleteAllBooks: () => cy.get('.text-right > #submit'),
     }
-
-    userNameValue = () => cy.get('#userName-value')
-
 
     //methods
     verifyLabels =(data) => {
@@ -39,6 +41,15 @@ export default class Profile extends Base {
             this.buttons.deleteAccount().should('have.text', data.deleteAccount)
             this.buttons.deleteAllBooks().should('have.text', data.deleteAllBooks)
         })
+    }
+
+    verifyPagination = (data) => {
+        this.wrappers.profile().find('div[style*="display: flex"]')
+            .within(() => {
+                this.button().eq(0).should('have.text', data.previous)
+                this.button().eq(1).should('have.text', data.next)
+                this.span().should('have.text', data.text)
+            })
 
     }
 }

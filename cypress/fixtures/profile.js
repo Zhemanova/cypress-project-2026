@@ -11,5 +11,11 @@ export const profileData = {
         deleteAllBooks: "Delete All Books",
         previous: "Previous",
         next: "Next"
+    },
+
+    pagination: {
+        previous: "Previous",
+        next: "Next",
+        text: "Page 1 of 1"
     }
 }

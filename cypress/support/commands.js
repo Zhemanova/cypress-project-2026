@@ -31,6 +31,21 @@ Cypress.Commands.add('login', (user) => {
     cy.get('#login').click()
 })
 
+Cypress.Commands.add('loginSession', (username, password) => {
+    cy.session([username, password], () => {
+    cy.visit('/login')
+    cy.get('#userName').clear().type(username)
+    cy.get('#password').clear().type(password)
+    cy.get('#login').click()
+        cy.url().should('include', '/profile')
+    }, {
+        validate(){
+            cy.visit('profile')
+            cy.get('#userName-value').should('exist')
+        }
+    })
+})
+
 Cypress.Commands.add('visitWithoutAds', (url, options = {}) => {
 
     cy.intercept('GET', '**/*ads*', { statusCode: 204 })
