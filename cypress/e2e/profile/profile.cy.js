@@ -16,4 +16,5 @@ describe('PROFILE', () => {
         profile.verifyButtons(profileData.buttons)
         profile.verifyPagination(profileData.pagination)
     });
+
 });

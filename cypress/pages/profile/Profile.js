@@ -50,6 +50,5 @@ export default class Profile extends Base {
                 this.button().eq(1).should('have.text', data.next)
                 this.span().should('have.text', data.text)
             })
-
     }
 }
