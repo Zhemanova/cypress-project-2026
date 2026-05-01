@@ -17,5 +17,13 @@ export const profileData = {
         previous: "Previous",
         next: "Next",
         text: "Page 1 of 1"
-    }
+    },
+
+    tableHeader: [
+        "Image",
+        "Title",
+        "Author",
+        "Publisher",
+        "Action"
+    ]
 }

@@ -5,6 +5,9 @@ export default class Profile extends Base {
     userNameValue = () => cy.get('#userName-value')
     button = () => cy.get('button')
     span = () => cy.get('span')
+    input = () => cy.get('input#searchBox')
+    mg = () => cy.get('.input-group').find('svg')
+    table = () => cy.get('table')
 
     wrappers = {
        top: () => cy.get('#books-wrapper'),
@@ -22,6 +25,14 @@ export default class Profile extends Base {
         goToStore: () => cy.get('#gotoStore'),
         deleteAccount: () => cy.get('.text-center > #submit'),
         deleteAllBooks: () => cy.get('.text-right > #submit'),
+    }
+
+    tableBody = {
+        img: () => cy.get('td img'),
+        title: () => cy.get(),
+        author: () => cy.get(),
+        publisher: () => cy.get(),
+        action: () => cy.get()
     }
 
     //methods
@@ -51,4 +62,28 @@ export default class Profile extends Base {
                 this.span().should('have.text', data.text)
             })
     }
+
+    verifyInput = () => {
+        this.input().should('have.attr', 'placeholder', 'Type to search')
+        this.mg().should('exist')
+    }
+
+    verifyTableHeader = (data) => {
+        this.table().find('thead')
+            .within(()=> {
+                cy.get('th').each((el, i) => {
+                    cy.wrap(el).should('have.text', data[i])
+                })
+            })
+    }
+
+    verifyTableBody = () => {
+        this.table().find('tbody').within(() => {
+            this.tableBody.img().should('have.attr', 'src')
+                .and('include', "bookimage")
+        })
+
+    }
+
+
 }

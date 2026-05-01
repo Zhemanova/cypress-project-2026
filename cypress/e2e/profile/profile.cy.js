@@ -15,6 +15,9 @@ describe('PROFILE', () => {
         profile.verifyLabels(profileData.labels)
         profile.verifyButtons(profileData.buttons)
         profile.verifyPagination(profileData.pagination)
+        profile.verifyInput()
+        profile.verifyTableHeader(profileData.tableHeader)
+        profile.verifyTableBody()
     });
 
 });
