@@ -18,6 +18,7 @@ describe('PROFILE', () => {
         profile.verifyInput()
         profile.verifyTableHeader(profileData.tableHeader)
         profile.verifyTableBody()
+        profile.verifyTableBody1()
     });
 
 });
