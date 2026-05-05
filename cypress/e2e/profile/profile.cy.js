@@ -8,7 +8,7 @@ describe('PROFILE', () => {
         cy.loginSession(users.login.userName, users.login.password)
     })
 
-    it('fill the form', () => {
+    it('verify elements', () => {
         cy.visit('/profile')
         cy.url().should('include', '/profile')
 
@@ -18,7 +18,6 @@ describe('PROFILE', () => {
         profile.verifyInput()
         profile.verifyTableHeader(profileData.tableHeader)
         profile.verifyTableBody()
-        profile.verifyTableBody1()
+        profile.verifyTableBody1()// aliases
     });
-
 });
