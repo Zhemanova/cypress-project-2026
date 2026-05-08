@@ -2,12 +2,12 @@ import Base from '../base/Base.js'
 
 export default class Profile1 extends Base {
     // selectors
-    userNameValue = () => cy.get('#userName-value')
-    button = () => cy.get('button')
-    span = () => cy.get('span')
-    input = () => cy.get('input#searchBox')
-    mg = () => cy.get('.input-group').find('svg')
-    table = () => cy.get('table')
+    userNameValue = '#userName-value'
+    button = 'button'
+    span = 'span'
+    input = 'input#searchBox'
+    mg = '.input-group'
+    table = 'table'
 
     wrappers = {
        top: () => cy.get('#books-wrapper'),
@@ -16,9 +16,11 @@ export default class Profile1 extends Base {
     }
 
     labels= {
-        textLeft: () => cy.get('.text-left > #userName-label'),
-        textEnd: () => cy.get('.text-end > #userName-label')
+        textLeft: '.text-left > #userName-label',
+        textEnd: '.text-end > #userName-label'
     }
+
+    paginationBox = 'div[style*="display: flex"]'
 
     buttons = {
         logout: () => cy.get('#submit'),
@@ -38,9 +40,9 @@ export default class Profile1 extends Base {
     //methods
 
     getLabels =() => {
-        return cy.get('#books-wrapper').then(($wrapper) => {
-            const textLeft = $wrapper.find('.text-left label').text().trim()
-            const textEnd =  $wrapper.find('.text-end label').first().text().trim()
+        return this.wrappers.top().then(($wrapper) => {
+            const textLeft = $wrapper.find(this.labels.textLeft).text().trim()
+            const textEnd =  $wrapper.find(this.labels.textEnd).first().text().trim()
             return {textLeft, textEnd}
         })
     }
@@ -54,6 +56,28 @@ export default class Profile1 extends Base {
             this.buttons.deleteAccount().should('have.text', data.deleteAccount)
             this.buttons.deleteAllBooks().should('have.text', data.deleteAllBooks)
         })
+    }
+
+    getPagination = () => {
+        const pgn = {}
+        return this.wrappers.profile()
+            .then($wrapper => {
+                pgn.prev = $wrapper.find(this.paginationBox).find(this.button).eq(0).text()
+                pgn.next = $wrapper.find(this.paginationBox).find(this.button).eq(1).text()
+                pgn.text = $wrapper.find(this.paginationBox).find(this.span).text()
+            })
+            .then(() => pgn)
+    }
+
+    getPagination1 = () => {
+        const container = () => cy.get('.profile-wrapper')
+            .find(this.paginationBox)
+
+        return {
+            prev: () => container().find(this.button).first(),
+            next: () => container().find(this.button).last(),
+            text: () => container().find(this.span)
+     }
     }
 
     verifyPagination = (data) => {
